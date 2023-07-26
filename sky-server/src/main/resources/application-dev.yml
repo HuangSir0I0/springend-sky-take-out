@@ -11,3 +11,8 @@ sky:
     access-key-id: LTAI5tKs9Z8x3JGjYuvri77H
     access-key-secret: M7bLrO9r06zQ91BwVHgntomQeI32YP
     bucket-name: web-hwkframework01
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 0
