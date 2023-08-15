@@ -8,7 +8,7 @@
                             order_time, checkout_time, pay_method, pay_status,
                             amount, remark, phone, address, consignee,
                             estimated_delivery_time, delivery_status,
-                             pack_amount, tableware_number, tableware_status)
+                            pack_amount, tableware_number, tableware_status)
         VALUES (#{number}, #{status}, #{userId}, #{addressBookId},
                 #{orderTime}, #{checkoutTime}, #{payMethod}, #{payStatus},
                 #{amount}, #{remark}, #{phone}, #{address}, #{consignee},
@@ -68,5 +68,19 @@
             </if>
         </where>
         order by order_time desc
+    </select>
+    <select id="sumByMap" resultType="java.lang.Double">
+        select sum(amount) from orders
+        <where>
+            <if test="begin != null">
+                and order_time &gt; #{begin}
+            </if>
+            <if test="end != null">
+                and order_time &lt; #{end}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
     </select>
 </mapper>
